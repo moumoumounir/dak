@@ -1,0 +1,17 @@
+interface UserCrudData {
+  Prenom	:string,	
+  Nom		:string,
+  Ref		:string,
+  Poste		:string,
+  'N+1'	:string,
+  'N+2'	:string, 
+  Director	:string,	
+  Groupe	:string,	
+  Email		:string,
+  Email1	:string,	
+  Phone		:string,
+  Password	:string	
+  adresse	:string,	
+  active	:string,
+  conseille :string
+ }

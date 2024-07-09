@@ -1,0 +1,20 @@
+{"form":{	
+        "Ref":{"type":"text","label":"Ref","value":"","disabled":true},
+        "Ref_Request":{"type":"text","label":"Ref Request","value":"","disabled":true},
+        "Ref_Object":{"type":"text","label":"Ref Object","value":"","disabled":true},
+       
+        "Request_Date":{"type":"text","label":"Request Date","value":"","disabled":true},
+        "Responsible_Group":{"type":"text","label":"Responsible Group","value":"","disabled":true},
+        "Responsible":{"type":"ValueApiSelect","label":"Responsible","value":"","disabled":true},
+        "Task_Date":{"type":"text","label":"Task Date","value":"Sysdate","disabled":true},
+        "Status1":{"type":"Nothing","label":"Status1","value":"","hide":1},
+   
+        "Start_Date":{"type":"startDate","label":"Start Date","value":"Sysdate"},
+        "End_Date":{"type":"endDate","label":"End Date","value":"Sysdate"},
+      
+        "Status":{"type":"select","label":"Status","value":"Waiting","paramValue":["Open","In Progress","To Do","Done","Reject","Requested"]},
+   
+        "Task_Text":{"type":"textarea","label":"Task Text","value":"","disabled":0, "hide":0}
+    } 
+}   
+      

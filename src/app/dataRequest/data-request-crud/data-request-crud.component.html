@@ -1,0 +1,184 @@
+
+<!-- div class="config-field col-10" -->
+<div style="font-size:smaller;" >
+    <form [formGroup]="myFormGroup" (ngSubmit)="onSubmit()" >
+        
+        <legend>
+            <h6> Request Details Description </h6>
+        </legend>
+
+        <BR>
+        <BR>
+            <div *ngIf="formInputLoop.length>0" class="col">
+     
+            <div>
+                <div *ngFor="let form_elem of formInputLoop1 ">
+            
+              
+                    <div *ngIf="form_elem.type=='password'">
+                        <label><b>{{form_elem.label}}</b> <img class="info" (click)="showHelp(form_elem.help)"
+                                src="assets/info.png" /></label>
+                        <input type="password" formControlName="{{form_elem.label}}" />
+                    </div>
+                    <div *ngIf="form_elem.type=='text'">
+            
+                        <label style="width:30%" for="test" *ngIf="myFormGroup.get(form_elem.label)"><b>{{form_elem.label}}</b>
+                        </label>
+            
+                        :<input style="width:65%;background-color: transparent; border:none;outline: none;"
+                            [readonly]="form_elem.disabled" id="test" *ngIf="myFormGroup.get(form_elem.label)" type="text"
+                            formControlName="{{form_elem.label}}" />
+                    </div>
+            
+            
+                    <div *ngIf="form_elem.type=='select'">
+            
+                        <div>
+                            <label style="width:30%" for="test" *ngIf="myFormGroup.get(form_elem.label)"><b>{{form_elem.label}}</b>
+                            </label>
+                            :<select style="width:68%" [attr.disabled]="form_elem.disabled==1 ? '' : null" id="test"
+                                (change)="SelectOnChange($event.target)" formControlName="{{form_elem.label}}">
+                                <option value="" disabled selected>Select your option</option>
+                                <option *ngFor="let item of form_elem.paramValue" [ngValue]="item">
+                                    {{item}}
+                                </option>
+                            </select>
+                        </div>
+            
+                    </div>
+                    <div *ngIf="form_elem.type=='selectMultiple'">
+                        <label *ngIf="myFormGroup.get(form_elem.label)"><b>{{form_elem.label}}</b> </label>
+                        <mat-select class="form-select" formControlName="{{form_elem.label}}" multiple
+                            (ngModelChange)="onSelectMultipleChange($event)">
+                            <mat-option *ngFor="let topping of form_elem.paramValue" [value]="topping">{{topping}}</mat-option>
+                        </mat-select>
+                    </div>
+                    <div *ngIf="form_elem.type=='checkbox'">
+            
+                        <label *ngIf="myFormGroup.get(form_elem.label)"><b>{{form_elem.label}}</b> </label>
+                        <div *ngFor="let block of form_elem.paramValue">
+                            <input type="checkbox" value="{{block}}" formControlName="{{form_elem.label}}"
+                                (change)=onCheckChangesNext($event) />{{block}}
+            
+                        </div>
+                    </div>
+                </div>
+          </div>
+        <!--               -->
+        <div>
+            <div *ngFor="let form_elem of formInputLoop2 ">
+        
+
+                <div *ngIf="form_elem.type=='password'">
+                    <label><b>{{form_elem.label}}</b> <img class="info" (click)="showHelp(form_elem.help)"
+                            src="assets/info.png" /></label>
+                    <input type="password" formControlName="{{form_elem.label}}" />
+                </div>
+                <div *ngIf="form_elem.type=='text'">
+        
+                    <label style="width:30%" for="test" *ngIf="myFormGroup.get(form_elem.label)"><b>{{form_elem.label}}</b>
+                    </label>
+        
+                    :<input style="width:65%;background-color: transparent; border:none;outline: none;"
+                        [readonly]="form_elem.disabled" id="test" *ngIf="myFormGroup.get(form_elem.label)" type="text"
+                        formControlName="{{form_elem.label}}" />
+                </div>
+        
+        
+                <div *ngIf="form_elem.type=='select'">
+        
+                    <div>
+                        <label style="width:30%" for="test" *ngIf="myFormGroup.get(form_elem.label)"><b>{{form_elem.label}}</b>
+                        </label>
+                        :<select style="width:68%" [attr.disabled]="form_elem.disabled==1 ? '' : null" id="test"
+                            (change)="SelectOnChange($event.target)" formControlName="{{form_elem.label}}">
+                            <option value="" disabled selected>Select your option</option>
+                            <option *ngFor="let item of form_elem.paramValue" [ngValue]="item">
+                                {{item}}
+                            </option>
+                        </select>
+                    </div>
+        
+                </div>
+                <div *ngIf="form_elem.type=='selectMultiple'">
+                    <label *ngIf="myFormGroup.get(form_elem.label)"><b>{{form_elem.label}}</b> </label>
+                    <mat-select class="form-select" formControlName="{{form_elem.label}}" multiple
+                        (ngModelChange)="onSelectMultipleChange($event)">
+                        <mat-option *ngFor="let topping of form_elem.paramValue" [value]="topping">{{topping}}</mat-option>
+                    </mat-select>
+                </div>
+                <div *ngIf="form_elem.type=='checkbox'">
+        
+                    <label *ngIf="myFormGroup.get(form_elem.label)"><b>{{form_elem.label}}</b> </label>
+                    <div *ngFor="let block of form_elem.paramValue">
+                        <input type="checkbox" value="{{block}}" formControlName="{{form_elem.label}}"
+                            (change)=onCheckChangesNext($event) />{{block}}
+        
+                    </div>
+                </div>
+            </div>
+
+    <!--               -->
+
+         </div>
+         </div> 
+<!--            one colonumns                                    -->
+
+
+    <div *ngFor="let form_elem of formInputLoop ">
+        <div *ngIf="form_elem.type=='uploadFile' && myFormGroup.get(form_elem.label)?.value !=''"  class="col-6">
+            <BR>
+                 <label style="width:30%" for="test" *ngIf="myFormGroup.get(form_elem.label)"><b>{{form_elem.label}}</b>
+                </label>
+    
+             :<input style="background-color: transparent; border:none;outline: none;" id="test" formControlName="{{form_elem.label}}" type="text"  />
+             <button  matTooltip="Download File" class="btn" (click)="download()">
+                <mat-icon style="margin-top: 15%;">download</mat-icon>
+            </button>
+            
+         </div>
+
+        <div *ngIf="form_elem.type=='textarea'" class="row">
+            <label><b>{{form_elem.label}}</b> </label>
+            <textarea class="form-control" rows="3" cols="35" spellcheck="false" style="font-size: 10px;"
+                [readonly]="form_elem.disabled" formControlName="{{form_elem.label}}">
+                        </textarea>
+
+        </div>
+    </div>
+
+
+    <mat-tab-group  class="demo-tab-group">
+        <mat-tab label="Approve">
+            <div *ngIf="echangeData1.data.length  > 0 ">
+
+                <!--legend>
+                    <h6> Liste Approval </h6>
+                </legend -->
+            <app-dynamic-table-list [echangeData]="echangeData1" >
+            
+            </app-dynamic-table-list>
+            </div>     
+        </mat-tab>
+        
+        <mat-tab label="Task">
+            <div *ngIf="echangeData2.data.length  > 0 ">
+
+             <app-dynamic-table-list [echangeData]="echangeData2" >           
+            </app-dynamic-table-list>
+            </div> 
+        </mat-tab>
+        
+      </mat-tab-group>
+
+<BR>
+<div style=" display: flex; justify-content: center;">     
+    <input style="width:25% ;" *ngIf="formInputLoop.length>0 "  type="submit"  class="btn btn-config " value="{{submitLabel}}">
+
+           
+</div>
+
+
+</form>
+
+</div>

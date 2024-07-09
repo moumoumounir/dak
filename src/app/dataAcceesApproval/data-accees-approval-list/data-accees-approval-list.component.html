@@ -1,0 +1,52 @@
+<!-- app-data-user></app-data-user -->
+<app-layout>
+    <app-navbar-user (sidenavToggle)="sidenav.toggle()" mode="side"></app-navbar-user>
+     <hr>
+      <mat-sidenav-container>
+          <mat-sidenav #sidenav mode="side" opened="true" >
+              <!--app-sidenav-list (sidenavClose)="sidenav.close()" mode="side"></app-sidenav-list -->
+              <app-sidenav-list-admin (sidenavClose)="sidenav.close()" mode="side"></app-sidenav-list-admin>
+
+            </mat-sidenav>
+          <mat-sidenav-content>
+        <main>
+            <div class="container">
+                <div *ngIf="echangeData.data.length>0 && action != 'details' ">
+                    <app-dynamic-table-list [echangeData]="echangeData" (countChanged)="actionHandler1($event)">
+                    </app-dynamic-table-list>
+                </div>
+                <BR>
+                    <div *ngIf="action == 'details'  ">
+                        <app-data-accees-approval-crud [echangeData]="crudData"  (countChanged)="crudActionHandler($event)"></app-data-accees-approval-crud>
+                    </div>
+
+            </div>
+        </main>
+    </mat-sidenav-content>
+    </mat-sidenav-container>
+    
+    </app-layout>
+
+<!--app-layout>
+    <div fxFlex>
+        <mat-sidenav-container fexFill fullscreen>
+            <mat-sidenav #sidenav role="navigation">
+                <app-sidenav-list-admin (sidenavClose)="sidenav.close()" mode="side"></app-sidenav-list-admin>
+            </mat-sidenav>
+
+            <mat-sidenav-content style="flex-direction: column; display: flex;">
+                <app-navbar-admin (sidenavToggle)="sidenav.toggle()" mode="side"></app-navbar-admin>
+                <div fxFlex>
+
+                    <div class="container">
+                        <div *ngIf="echangeData.data.length>0 ">
+                            <app-table-fil-sort-pag [echangeData]="echangeData" (countChanged)="actionHandler1($event)">
+                            </app-table-fil-sort-pag>
+                        </div>
+
+                    </div>
+                </div>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+    </div>
+</app-layout -->

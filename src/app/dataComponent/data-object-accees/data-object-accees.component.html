@@ -1,0 +1,343 @@
+<!-- div class="config-field col-10" -->
+<div
+  *ngIf="spinerSelectedField"
+  class="wrapper"
+  style="height: 20px; align-self: center"
+>
+  <mat-progress-spinner
+    style="left: 50%"
+    class="inner"
+    mode="indeterminate"
+    diameter="40"
+  ></mat-progress-spinner>
+</div>
+<div style="font-size: smaller">
+  <form [formGroup]="myFormGroup" (ngSubmit)="onSubmit()">
+    <legend>
+      <h3>{{ formTitle }}</h3>
+    </legend>
+
+    <BR />
+    <BR />
+    <div *ngIf="formInputLoop.length > 0" class="col">
+      <div>
+        <div *ngFor="let form_elem of formInputLoop1">
+          <!--div *ngIf="form_elem.type=='startDate'" class="row col-10">
+                                <mat-form-field>
+                                    <input matInput [matDatepicker]="picker1" placeholder="Start Date" [formControl]="startDate">
+                                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker1></mat-datepicker>
+                                </mat-form-field>  
+                            </div>
+                            <div *ngIf="form_elem.type=='endDate'" class="row col-10">
+                                <mat-form-field>
+                                    <input matInput [matDatepicker]="picker2" placeholder="End Date"
+                                     [min]="startDate.value" [formControl]="endDate">
+                                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker2></mat-datepicker>
+                            </mat-form-field>           
+                                
+                            </div -->
+                            <div *ngIf="form_elem.type == 'file'">
+                              <label for="file" *ngIf="myFormGroup.get(form_elem.label)"
+                                ><b>{{ form_elem.label }}</b>
+                              </label>
+                      
+                              <input
+                                formControlName="{{ form_elem.label }}"
+                                type="file"
+                                id="file"
+                                (change)="onFileChanged($event)"
+                              />
+                      
+                            </div>
+
+          <div *ngIf="form_elem.type == 'password'">
+            <label
+              ><b>{{ form_elem.label }}</b>
+              <img
+                class="info"
+                (click)="showHelp(form_elem.help)"
+                src="assets/info.png"
+            /></label>
+            <input type="password" formControlName="{{ form_elem.label }}" />
+          </div>
+          <div *ngIf="form_elem.type == 'text'">
+            <label for="test" *ngIf="myFormGroup.get(form_elem.label)"
+              ><b>{{ form_elem.label }}</b>
+            </label>
+
+            :<input
+              style="background-color: transparent; border: none; outline: none"
+              [readonly]="form_elem.disabled"
+              id="test"
+              *ngIf="myFormGroup.get(form_elem.label)"
+              type="text"
+              formControlName="{{ form_elem.label }}"
+            />
+          </div>
+
+          <div *ngIf="form_elem.type == 'select'">
+            <div>
+              <label for="test" *ngIf="myFormGroup.get(form_elem.label)"
+                ><b>{{ form_elem.label }}</b>
+              </label>
+              :<select
+                [attr.disabled]="form_elem.disabled == 1 ? '' : null"
+                id="test"
+                (change)="SelectOnChange($event.target)"
+                formControlName="{{ form_elem.label }}"
+              >
+                <option value="" disabled selected>Select your option</option>
+                <option
+                  *ngFor="let item of form_elem.paramValue"
+                  [ngValue]="item"
+                >
+                  {{ item }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div *ngIf="form_elem.type == 'selectMultiple'">
+            <label *ngIf="myFormGroup.get(form_elem.label)"
+              ><b>{{ form_elem.label }}</b>
+            </label>
+            <mat-select
+              class="form-select"
+              formControlName="{{ form_elem.label }}"
+              multiple
+              (ngModelChange)="onSelectMultipleChange($event)"
+            >
+              <mat-option
+                *ngFor="let topping of form_elem.paramValue"
+                [value]="topping"
+                >{{ topping }}</mat-option
+              >
+            </mat-select>
+          </div>
+          <div *ngIf="form_elem.type == 'checkbox'">
+            <label *ngIf="myFormGroup.get(form_elem.label)"
+              ><b>{{ form_elem.label }}</b>
+            </label>
+            <div *ngFor="let block of form_elem.paramValue">
+              <input
+                type="checkbox"
+                value="{{ block }}"
+                formControlName="{{ form_elem.label }}"
+                (change)="onCheckChangesNext($event)"
+              />{{ block }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--               -->
+      <div>
+        <div *ngFor="let form_elem of formInputLoop2">
+          <div *ngIf="form_elem.type == 'file'">
+            <label for="file" *ngIf="myFormGroup.get(form_elem.label)"
+              ><b>{{ form_elem.label }}</b>
+            </label>
+    
+            <input
+              formControlName="{{ form_elem.label }}"
+              type="file"
+              id="file"
+              (change)="onFileChanged($event)"
+            />
+    
+          </div>
+          <div *ngIf="form_elem.type == 'password'">
+            <label
+              ><b>{{ form_elem.label }}</b>
+              <img
+                class="info"
+                (click)="showHelp(form_elem.help)"
+                src="assets/info.png"
+            /></label>
+            <input type="password" formControlName="{{ form_elem.label }}" />
+          </div>
+          <div *ngIf="form_elem.type == 'text'">
+            <label for="test" *ngIf="myFormGroup.get(form_elem.label)"
+              ><b>{{ form_elem.label }}</b>
+            </label>
+
+            :<input
+              style="background-color: transparent; border: none; outline: none"
+              [readonly]="form_elem.disabled"
+              id="test"
+              *ngIf="myFormGroup.get(form_elem.label)"
+              type="text"
+              formControlName="{{ form_elem.label }}"
+            />
+          </div>
+
+          <div *ngIf="form_elem.type == 'select'">
+            <div>
+              <label for="test" *ngIf="myFormGroup.get(form_elem.label)"
+                ><b>{{ form_elem.label }}</b>
+              </label>
+              :<select
+                [attr.disabled]="form_elem.disabled == 1 ? '' : null"
+                id="test"
+                (change)="SelectOnChange($event.target)"
+                formControlName="{{ form_elem.label }}"
+              >
+                <option value="" disabled selected>Select your option</option>
+                <option
+                  *ngFor="let item of form_elem.paramValue"
+                  [ngValue]="item"
+                >
+                  {{ item }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div *ngIf="form_elem.type == 'selectMultiple'">
+            <label *ngIf="myFormGroup.get(form_elem.label)"
+              ><b>{{ form_elem.label }}</b>
+            </label>
+            <mat-select
+              class="form-select"
+              formControlName="{{ form_elem.label }}"
+              multiple
+              (ngModelChange)="onSelectMultipleChange($event)"
+            >
+              <mat-option
+                *ngFor="let topping of form_elem.paramValue"
+                [value]="topping"
+                >{{ topping }}</mat-option
+              >
+            </mat-select>
+          </div>
+          <div *ngIf="form_elem.type == 'checkbox'">
+            <label *ngIf="myFormGroup.get(form_elem.label)"
+              ><b>{{ form_elem.label }}</b>
+            </label>
+            <div *ngFor="let block of form_elem.paramValue">
+              <input
+                type="checkbox"
+                value="{{ block }}"
+                formControlName="{{ form_elem.label }}"
+                (change)="onCheckChangesNext($event)"
+              />{{ block }}
+            </div>
+          </div>
+        </div>
+
+        <!--               -->
+      </div>
+    </div>
+    <!--            one colonumns                                    -->
+
+    <hr />
+    <div *ngFor="let form_elem of formInputLoop3">
+     
+      <div *ngIf="form_elem.type == 'uploadfile'">
+        <BR />
+        <h6>Select File From Local</h6>
+
+        <input
+          formControlName="{{ form_elem.label }}"
+          type="file"
+          id="file"
+          (change)="onFileChanged($event)"
+        />
+        <BR />
+      </div>
+      <div *ngIf="form_elem.type == 'text'">
+        <label for="test" *ngIf="myFormGroup.get(form_elem.label)"
+          ><b>{{ form_elem.label }}</b>
+        </label>
+
+        :<input
+          [readonly]="form_elem.disabled"
+          id="test"
+          *ngIf="myFormGroup.get(form_elem.label)"
+          type="text"
+          formControlName="{{ form_elem.label }}"
+        />
+      </div>
+
+      <div *ngIf="form_elem.type == 'select'">
+        <div>
+          <label for="test" *ngIf="myFormGroup.get(form_elem.label)"
+            ><b>{{ form_elem.label }}</b>
+          </label>
+          :<select
+            [attr.disabled]="form_elem.disabled == 1 ? '' : null"
+            id="test"
+            (change)="SelectOnChange($event.target)"
+            formControlName="{{ form_elem.label }}"
+          >
+            <option value="" disabled selected>Select your option</option>
+            <option *ngFor="let item of form_elem.paramValue" [ngValue]="item">
+              {{ item }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div *ngIf="form_elem.type == 'selectMultiple'">
+        <label *ngIf="myFormGroup.get(form_elem.label)"
+          ><b>{{ form_elem.label }}</b>
+        </label>
+        <mat-select
+          class="form-select"
+          formControlName="{{ form_elem.label }}"
+          multiple
+          (ngModelChange)="onSelectMultipleChange($event)"
+        >
+          <mat-option
+            *ngFor="let topping of form_elem.paramValue"
+            [value]="topping"
+            >{{ topping }}</mat-option
+          >
+        </mat-select>
+      </div>
+      <div *ngIf="form_elem.type == 'checkbox'">
+        <label *ngIf="myFormGroup.get(form_elem.label)"
+          ><b>{{ form_elem.label }}</b>
+        </label>
+        <div *ngFor="let block of form_elem.paramValue">
+          <input
+            type="checkbox"
+            value="{{ block }}"
+            formControlName="{{ form_elem.label }}"
+            (change)="onCheckChangesNext($event)"
+          />{{ block }}
+        </div>
+      </div>
+
+      <div *ngIf="form_elem.type == 'textarea'">
+        <label
+          ><b>{{ form_elem.label }}</b>
+        </label>
+        <textarea
+          class="form-control"
+          rows="3"
+          cols="35"
+          spellcheck="false"
+          [readonly]="form_elem.disabled"
+          formControlName="{{ form_elem.label }}"
+        >
+        </textarea>
+      </div>
+         <!--div style="font-size: smaller;color: red;"
+        *ngIf="myFormGroup.get(form_elem.label)?.errors && myFormGroup.get(form_elem.label)?.errors['required']">
+        {{ form_elem.label }} is required
+    </div -->
+
+    </div>
+
+    <BR />
+
+    <div style="display: flex; justify-content: center">
+      <input
+        style="width: 25%"
+        *ngIf="formInputLoop.length > 0"
+        type="submit"
+        class="btn btn-config"
+        value="{{ submitLabel }}"
+      />
+    </div>
+  </form>
+</div>

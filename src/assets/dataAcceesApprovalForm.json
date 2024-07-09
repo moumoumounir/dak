@@ -1,0 +1,11 @@
+{"form":{	
+    "Ref":{"type":"text","label":"Ref","value":"","disabled":true},
+    "Ref_Request":{"type":"text","label":"Ref Request","value":"","disabled":true},
+    "Ref_Object":{"type":"text","label":"Ref Object","value":"","disabled":true},
+    "Responsible":{"type":"text","label":"Responsible","value":"localStorage.getItem('user')","disabled":true},
+    "Request_Date":{"type":"text","label":"Request Date","value":"","disabled":true},
+    "Approval_Date":{"type":"text","label":"Approval Date","value":"sysdate","disabled":true},
+    "Status":{"type":"select","label":"Status","value":"Approve","paramValue":["Approve","Reject"]},
+    "Approval_Text":{"type":"textarea","label":"Approval Text","value":"","disabled":0, "hide":0}    
+}
+}

@@ -1,0 +1,34 @@
+{   "TitleFormObject":"Data Object Details",
+    "form":{
+    "Ref_Request":{"type":"text","label":"Ref Request","value":"","disabled":true},
+    "User":{"type":"text","label":"User","value":"","disabled":true},
+    "Ref_Object":{"type":"text","label":"Ref Object","value":"","disabled":true},
+    "Request_Subject":{"type":"text","label":"Request Subject","value":"","disabled":1},
+    "Role":{"type":"text","label":"Role","value":"Read","paramValue":["Read","Write"],"disabled":1},
+    "Statut":{"type":"text","label":"Statut","value":"Open","paramValue":["Open","Approuved","Closed"],"disabled":1},
+    "Request_Date":{"type":"text","label":"Request Date","value":"","disabled":1},
+    "Validation_Date":{"type":"text","label":"Validation Date","value":"","disabled":1},
+    "Attached_File":{"type":"uploadFile","label":"Attached File","value":""},
+   
+    "Request_Details":{"type":"textarea","label":"Request Details","value":"","disabled":1}
+} , 
+"TitleFormAccees":"Data Accees Request",
+"formAccees":{
+    "Ref_Object":{"type":"text","label":"Ref Object","value":"","disabled":1},
+    "Short_Description":{"type":"text","label":"Short Description","value":"","disabled":1},
+    "Type":{"type":"text","label":"Type","value":"DB","paramValue":["DB","Table Details","Table KPI"],"disabled":1},
+    "Parent":{"type":"text","label":"Parent","value":"BI","paramValue":["SI","Data","BI","BIProd","BiReport","DBDMC"],"disabled":1},
+    "Data_Owner":{"type":"text","label":"Data Owner","value":"","disabled":1},
+    "Long_Description":{"type":"textarea","label":"Long Description","value":"","disabled":1},
+    "Request_Date":{"type":"text","label":"Request Date","value":"Sysdate","disabled":0},
+    "Statut":{"type":"text","label":"Statut","value":"Open","paramValue":["Open","Approuved","Closed"],"disabled":1},
+  
+    "Attached_File":{"type":"file","label":"Attached File","value":""},
+    "Request_Subject":{"type":"text","label":"Request Subject","value":"","disabled":0},
+    "Role":{"type":"select","label":"Role","value":"Read","paramValue":["Read","Write"],"disabled":0},
+    "Request_Details":{"type":"textarea","label":"Request Details","value":"","required":0}  
+},
+"displayedColumns" : ["Ref_Request" 	,"User" 	,"Ref_Object" 	,"Request_Subject","Role", 	"Request_Date" ,"Statut"],
+"actionColumns" : [ "details", "update", "delete"],
+"titleList":"Data Request List "
+}  

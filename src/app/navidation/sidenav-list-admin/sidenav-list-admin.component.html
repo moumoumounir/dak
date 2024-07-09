@@ -1,0 +1,126 @@
+<mat-nav-list>
+  <div *ngIf="page === 'Accueil'" class="active">
+    <a mat-list-item routerLink="/report">
+      <mat-icon>home</mat-icon> <span class="nav-caption">Accueil</span>
+    </a>
+  </div>
+  <div *ngIf="page != 'Accueil'">
+    <a mat-list-item routerLink="/report">
+      <mat-icon>home</mat-icon> <span class="nav-caption">Accueil</span>
+    </a>
+  </div>
+  <div *ngIf="page === 'ListDataObject'" class="active">
+    <a mat-list-item routerLink="/ListDataObject">
+      <mat-icon>settings</mat-icon><span class="nav-caption">Data Catalog</span>
+    </a>
+  </div>
+  <div *ngIf="page != 'ListDataObject'">
+    <a mat-list-item routerLink="/ListDataObject">
+      <mat-icon>settings</mat-icon><span class="nav-caption">Data Catalog</span>
+    </a>
+  </div>
+  <div *ngIf="page === 'ListDataAttributes'" class="active">
+    <a mat-list-item routerLink="/ListDataAttributes">
+      <mat-icon>settings</mat-icon
+      ><span class="nav-caption">Data Attributes</span>
+    </a>
+  </div>
+  <div *ngIf="page != 'ListDataAttributes'">
+    <a mat-list-item routerLink="/ListDataAttributes">
+      <mat-icon>settings</mat-icon
+      ><span class="nav-caption">Data Attributes</span>
+    </a>
+  </div>
+
+  <div *ngIf="page === 'ListDataConfApproval'" class="active">
+    <a mat-list-item routerLink="/ListDataConfApproval">
+      <mat-icon>settings</mat-icon
+      ><span class="nav-caption">Data Access Approval</span>
+    </a>
+  </div>
+  <div *ngIf="page != 'ListDataConfApproval'">
+    <a mat-list-item routerLink="/ListDataConfApproval">
+      <mat-icon>settings</mat-icon
+      ><span class="nav-caption">Data Access Approval</span>
+    </a>
+  </div>
+
+  <div *ngIf="page === 'ListDataConfTask'" class="active">
+    <a mat-list-item routerLink="/ListDataConfTask">
+      <mat-icon>settings</mat-icon
+      ><span class="nav-caption">Data Access Task</span>
+    </a>
+  </div>
+  <div *ngIf="page != 'ListDataConfTask'">
+    <a mat-list-item routerLink="/ListDataConfTask">
+      <mat-icon>settings</mat-icon
+      ><span class="nav-caption">Data Access Task</span>
+    </a>
+  </div>
+
+  <!--div *ngIf="page === 'ListUser'" class="active">
+    <a mat-list-item routerLink="/ListUser">
+      <mat-icon>assignment_ind</mat-icon><span class="nav-caption">User</span>
+    </a>
+  </div>
+  <div *ngIf="page != 'ListUser'">
+    <a mat-list-item routerLink="/ListUser">
+      <mat-icon>assignment_ind</mat-icon><span class="nav-caption">User</span>
+    </a>
+  </div -->
+  <div *ngIf="page === 'ListRequests'" class="active">
+    <a mat-list-item routerLink="/ListRequests">
+      <mat-icon>shop</mat-icon
+      ><span class="nav-caption">Data Access Request</span>
+    </a>
+  </div>
+  <div *ngIf="page != 'ListRequests'">
+    <a mat-list-item routerLink="/ListRequests">
+      <mat-icon>shop</mat-icon
+      ><span class="nav-caption">Data Access Request</span>
+    </a>
+  </div>
+  <div *ngIf="page != 'ListApproval'">
+    <a mat-list-item routerLink="/ListApproval">
+      <mat-icon>account_balance</mat-icon
+      ><span class="nav-caption">My Approval</span>
+    </a>
+  </div>
+  <div *ngIf="page === 'ListApproval'" class="active">
+    <a mat-list-item routerLink="/ListApproval">
+      <mat-icon>account_balance</mat-icon
+      ><span class="nav-caption">My Approval</span>
+    </a>
+  </div>
+  <div *ngIf="page != 'ListTask'">
+    <a mat-list-item routerLink="/ListTask">
+      <mat-icon>work</mat-icon><span class="nav-caption">My Task</span>
+    </a>
+  </div>
+  <div *ngIf="page === 'ListTask'" class="active">
+    <a mat-list-item routerLink="/ListTask">
+      <mat-icon>work</mat-icon><span class="nav-caption">My Task</span>
+    </a>
+  </div>
+
+   
+  <div [ngClass]="{'active': page === 'ListUser'}">
+    <a mat-list-item routerLink="/ListUser" >
+     <mat-icon>work</mat-icon><span class="nav-caption">User</span>  </a>
+    </div>
+  
+
+
+
+  <!--a mat-list-item routerLink="#" (click)="onSidenavClose()">
+        <mat-icon>account_balance</mat-icon><span class="nav-caption">Relance & Notification</span>
+    </a>
+    <mat-list-item [matMenuTriggerFor]="menu">
+        <mat-icon>unfold_more</mat-icon>
+        <a matline>Finance</a>
+    </mat-list-item>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="onSidenavClose()">Encaissements</button>
+      <button mat-menu-item (click)="onSidenavClose()">Dépenses</button>
+    </mat-menu -->
+</mat-nav-list>

@@ -1,0 +1,15 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AdminService {
+
+  constructor(private http: HttpClient) { }
+
+  login(email: string, password: string) {
+    console.log('login admin '+email+'  '+password)
+    return this.http.get<any>("http://localhost:8080/admin/?email="+email+"&password="+password );
+  }
+}
