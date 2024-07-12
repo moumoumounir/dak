@@ -1,0 +1,13 @@
+{"form":{
+    "Col_Ref"	:{"type":"text","label":"Col_Ref","value":""	,"disabled":false},	
+    "Name"		:{"type":"text","label":"Name","value":""	 	,"disabled":false},
+    "Description":{"type":"text","label":"Description","value":""	 	,"disabled":false},
+    "Ref_Object" :{"type":"ValueApiSelect","label":"Responsible","value":"","disabled":true},
+    "System"	:{"type":"text","label":"System","value":""	,"disabled":false}
+
+},
+"TitleFormObject":"Data Set Details",
+"displayedColumns" : ["Col_Ref","Name","Description","Ref_Object"],
+"actionColumns" :[ "details", "delete","Add"],
+"titleList":"Attributes List "   
+}    
